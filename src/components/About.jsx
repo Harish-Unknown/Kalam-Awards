@@ -4,7 +4,7 @@ import { Link as Linker } from 'react-router-dom'
 
 function About() {
     return (
-        <div name="About" className='bg-About h-full md:h-full bg-center bg-cover lg:flex justify-center items-center md:p-10 pb-5'>
+        <div id='About' name="About" className='bg-About h-full md:h-full bg-center bg-cover lg:flex justify-center items-center md:p-10 pb-5'>
             <div className='flex-50 p-5'>
                 <h2 className='font-bold leading-10 p-3'>Celebrating 72th Birth Anniversary of Our Founder Chairman Shri M.J.F.Ln Leo Muthu on April 9th 2024.</h2>
                 <ul className='leading-8 p-3'>

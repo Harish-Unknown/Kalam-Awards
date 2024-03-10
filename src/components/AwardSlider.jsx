@@ -89,7 +89,7 @@ return (
     <div className='w-5/6 mx-auto pb-20'>
     <Slider {...settings}>
       {data.map((d) => (
-            <Card className='max-w-[350px] h-[450px] ml-8 md:ml-5' sx={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
+            <Card className='max-w-[350px] h-[450px] md:ml-40 lg:ml-5' sx={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
               <CardMedia
                 sx={{ height: 350 }}
                 image={d.img}

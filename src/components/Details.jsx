@@ -7,7 +7,7 @@ const Details = () => {
     return (
         <div className='p-10 md:p-20 flex flex-col md:flex-row bg-[#FBF6F0]'>
             <div className='flex-50 w-[80vw] md:w-[50vw]'>
-                <h1 className='m-5 text-5xl font-bold'>Participating Institutions</h1>
+                <h1 className='m-5 text-4xl md:text-5xl font-bold'>Participating Institutions</h1>
                 <ul className='m-5 text-xl'>
                     <li className='list-disc'>Government & Government Aided Higher Secondary Schools</li>
                     <li className='list-disc'>Matriculation Schools</li>

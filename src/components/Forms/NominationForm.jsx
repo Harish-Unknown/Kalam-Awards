@@ -92,7 +92,7 @@ const NominationForm = () => {
   
 
   const FileUploadField = (category, label) => (
-    <div className="form-group drop-zone" onDrop={(e) => handleDrop(e, category)} onDragOver={handleDragOver}>
+    <div id='Nomination' className="form-group drop-zone" onDrop={(e) => handleDrop(e, category)} onDragOver={handleDragOver}>
       <label style={{cursor: 'pointer'}}>
         {label}
       <input

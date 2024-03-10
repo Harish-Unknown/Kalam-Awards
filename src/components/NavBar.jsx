@@ -3,6 +3,7 @@ import { Link } from 'react-scroll'
 import { FaTimes } from 'react-icons/fa'
 import { CiMenuFries } from 'react-icons/ci'
 import { Link as Linker } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 
 function NavBar() {
@@ -14,7 +15,7 @@ function NavBar() {
   const content = <>
     <div className='lg:hidden block absolute top-14 w-full left-0 right-0 bg-gray-100 shadow-xl text-gray-900 transition'>
       <ul className='text-center text-xl p-10'>
-        <Link smooth duration={300} to="About" style={{ textDecoration: 'none', color: '#fff' }}>
+        <Link smooth duration={300} to="/#About" style={{ textDecoration: 'none', color: '#fff' }}>
           <li className='my-3 py-3 text-gray-900 hover:bg-gray-300 hover:rounded'>About</li>
         </Link>
         <Link smooth duration={300} to="Nominations" style={{ textDecoration: 'none', color: '#fff' }}>
@@ -44,15 +45,15 @@ function NavBar() {
         <div className='lg:flex md:flex lg: flex-1  justify-end font-normal hidden items-center'>
           <div className='flex'>
             <ul className='flex gap-8 lg:gap-12 items-center text-[15px] lg:text-[18px]'>
-              <Link smooth duration={300} to="About" style={{ textDecoration: 'none', color: '#fff' }}>
+              <HashLink smooth duration={300} to="/#About" style={{ textDecoration: 'none', color: '#fff' }}>
                 <li className='hover:text-gray-900 text-gray-700 md:mt-3 md:mb-[-10px] transition border-b-2 border-gray-100 hover:border-gray-900 cursor-pointer'>About</li>
-              </Link>
-              <Link smooth duration={300} to="Nomination" style={{ textDecoration: 'none', color: '#fff' }}>
+              </HashLink>
+              <HashLink smooth duration={300} to="/nomination" style={{ textDecoration: 'none', color: '#fff' }}>
                 <li className='hover:text-gray-900 text-gray-700 md:mt-3 md:mb-[-10px]  transition border-b-2 border-gray-100 hover:border-gray-900 cursor-pointer'>Nominations</li>
-              </Link>
-              <Link smooth duration={300} to="Events" style={{ textDecoration: 'none', color: '#fff' }}>
+              </HashLink>
+              <HashLink smooth duration={300} to="/#Events" style={{ textDecoration: 'none', color: '#fff' }}>
                 <li className='hover:text-gray-900 text-gray-700 md:mt-3 md:mb-[-10px]  transition border-b-2 border-gray-100 hover:border-gray-900 cursor-pointer'>Events</li>
-              </Link>
+              </HashLink>
               <Linker to='/termsandconditions' style={{ textDecoration: 'none', color: '#fff' }}>
                 <li className='hover:text-gray-900 text-gray-700 md:mt-3 md:mb-[-10px]  transition border-b-2 border-gray-100 hover:border-gray-900 cursor-pointer'>Terms & Conditions</li>
               </Linker>

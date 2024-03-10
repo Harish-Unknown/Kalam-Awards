@@ -8,7 +8,7 @@ import {
 
 const Faq = () => {
     return (
-        <div className='p-10 md:p-20 flex flex-col md:flex-row h-full bg-[#FBF6F0]'>
+        <div id='Faq' className='p-10 md:p-20 flex flex-col md:flex-row h-full bg-[#FBF6F0]'>
             <div className='flex-1/2 md:m-10 w-[80vw] md:w-[50vw]'>
                 <h1 className='text-5xl mb-5 font-bold'>FAQs</h1>
                 <p className='text-xl my-5 w-[90%]'>Find answers to common questions about the nomination process, event details, and participation guidelines.</p>

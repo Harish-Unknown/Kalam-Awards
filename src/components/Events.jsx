@@ -2,13 +2,13 @@ import React from 'react'
 
 function Events() {
   return (
-    <div name="Events" className='flex flex-col justify-center items-center h-full w-full p-20'>
-      <h1 className='pb-20'>Event Process</h1>
+    <div id='Events' name="Events" className='flex flex-col justify-center items-center h-full w-full p-20'>
+      <h1 className='pb-20 text-4xl md:text-5xl font-bold'>Event Process</h1>
       <div className='w-[90vw] flex flex-col justify-center'>
         <svg height="10" className='z-[-10] ml-[125px] w-[65vw] lg:w-[70vw] hidden md:flex absolute'>
           <line x1="0" y1="0" x2="100%" y2="0" stroke="black" strokeWidth="9" />
         </svg>
-        <svg height="1" className='absolute z-[-10] left-1/2 transform -translate-x-1/2 h-[65vh] lg:h-[80vh] md:hidden' viewBox="0 0 1 100">
+        <svg height="1" className='absolute z-[-10] left-1/2 transform -translate-x-1/2 h-[58vh] md:hidden' viewBox="0 0 1 100">
           <line x1="0" y1="0" x2="0" y2="100%" stroke="black" strokeWidth="2" />
         </svg>
         <div className='block md:flex justify-between items-center'>
