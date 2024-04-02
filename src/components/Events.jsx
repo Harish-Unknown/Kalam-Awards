@@ -34,7 +34,7 @@ function Events() {
             <h5 className='w-[30%] md:w-full text-center'>Confirmation of Participation</h5>
           </div>
           <div className='flex w-full my-5 md:flex-col justify-center items-center gap-3'>
-            <h5 className='w-[30%]'>09.04.2024</h5>
+            <h5 className='w-[30%]'>26.04.2024</h5>
             <div className='w-[100px] h-[100px] rounded-[360px] bg-[#000] flex justify-center items-center'>
               <div className='w-[50px] h-[50px] rounded-[360px] bg-[#BD9261]'></div>
             </div>

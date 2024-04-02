@@ -4,6 +4,7 @@ import { FaTimes } from 'react-icons/fa'
 import { CiMenuFries } from 'react-icons/ci'
 import { Link as Linker } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
+import logo from '/images/group.png'
 
 
 function NavBar() {
@@ -40,7 +41,7 @@ function NavBar() {
     <nav className='bg-white sticky top-0 z-50'>
       <div className='h-5vh flex justify-between z-50 text-gray-800 py-[12px] px-10 lg:px-20'>
         <div className='flex items-center'>
-          <span className='text-3xl font-bold'>Logo</span>
+          <img src={logo} className='w-[200px]' alt='Sairam_Logo'/>
         </div>
         <div className='lg:flex md:flex lg: flex-1  justify-end font-normal hidden items-center'>
           <div className='flex'>
