@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
+import { Button } from "antd";
 
 const organizationCodeMap = {
   Government: "GO",
@@ -15,11 +16,12 @@ export default function RegForm() {
   const [counter, setCounter] = useState(1);
   const [customUUID, setCustomUUID] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [submitClicked, setsubmitClicked] = useState(false);
 
   const onSubmit = (data) => {
-    
     const finalData = { ...data };
-    fetch("http://0.0.0.0:8001/register", {
+    finalData.dob = new Date(data.dob).getUTCMilliseconds();
+    fetch("https://kalam-awards-server.onrender.com/register", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -29,14 +31,15 @@ export default function RegForm() {
     })
       .then((res) => res.json())
       .then((data) => {
-          console.log(data)
-          setCustomUUID(data.id)
+        setsubmitClicked(false);
+        console.log(data);
+        setCustomUUID(data.id);
+        setShowConfirmation(true);
       })
       .catch(function (res) {
         console.log(res);
+        setsubmitClicked(false);
       });
-
-    setShowConfirmation(true);
   };
 
   return (
@@ -215,7 +218,9 @@ export default function RegForm() {
         />
 
         <div className="w-full flex justify-between mt-6">
-          <input type="submit" className="bg-blue-500 text-white p-3 rounded-md cursor-pointer hover:bg-blue-600" />
+          <Button htmlType="submit" loading={submitClicked}>
+            Submit
+          </Button>
           <input type="reset" className="bg-red-500 text-white p-3 rounded-md cursor-pointer hover:bg-red-600" />
         </div>
       </form>
