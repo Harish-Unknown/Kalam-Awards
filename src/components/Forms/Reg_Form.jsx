@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
-import { Button } from "antd";
+import { Button, Spin } from "antd";
+import '../../index.css';
 
 const organizationCodeMap = {
   Government: "GO",
@@ -12,13 +13,15 @@ const organizationCodeMap = {
 };
 
 export default function RegForm() {
-  const { handleSubmit, control, register, setValue } = useForm();
+  const { handleSubmit, control, register, setValue, reset } = useForm();
   const [counter, setCounter] = useState(1);
   const [customUUID, setCustomUUID] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [submitClicked, setsubmitClicked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = (data) => {
+    setLoading(true);
     const finalData = { ...data };
     finalData.dob = new Date(data.dob).getUTCMilliseconds();
     fetch("https://kalam-awards-server.onrender.com/register", {
@@ -35,21 +38,25 @@ export default function RegForm() {
         console.log(data);
         setCustomUUID(data.id);
         setShowConfirmation(true);
+        reset();
       })
       .catch(function (res) {
         console.log(res);
-        setsubmitClicked(false);
+        // setsubmitClicked(false);
+      })
+      .finally(() => {
+        setLoading(false); 
       });
   };
 
   return (
-    <div className="bg-white p-10 rounded-md shadow-md w-300 mx-auto max-w-full">
+    <div className="bg-[#dad4c3] p-10 rounded-md shadow-md w-300 mx-auto max-w-full">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-5 rounded-md shadow-md w-300 mx-auto max-w-full text-black"
+        className="bg-white p-5 rounded-xl shadow-md w-300 mx-auto max-w-[800px] text-black"
       >
         <h1 className="text-3xl font-bold mb-4">Kalam Leo-Muthu educational awards 2024</h1>
-        <h3 className="text-2xl font-bold mb-4">Pre-Registration Form</h3>
+        <h3 className="text-2xl font-bold mb-4">Registration Form</h3>
         <hr />
         <br />
         <label className="block text-sm mb-2">Nomination Type*</label>
@@ -218,12 +225,18 @@ export default function RegForm() {
         />
 
         <div className="w-full flex justify-between mt-6">
-          <Button htmlType="submit" loading={submitClicked}>
+          <Button htmlType="submit" className="sub bg-green-500 text-white px-3 rounded-md cursor-pointer hover:border-none" loading={loading}>
             Submit
           </Button>
-          <input type="reset" className="bg-red-500 text-white p-3 rounded-md cursor-pointer hover:bg-red-600" />
+          <input type="reset" className="bg-red-500 text-white px-3 rounded-md cursor-pointer hover:bg-red-600" />
         </div>
       </form>
+
+      {loading && ( 
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+          <Spin size="large" />
+        </div>
+      )}
 
       {showConfirmation && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">

@@ -15,3 +15,7 @@
 .cont{
   background-image: url('./images/aboutbg.png');
 }
+
+.sub:hover{
+  background-color: green !important;
+}
