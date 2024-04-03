@@ -14,7 +14,7 @@ function NavBar() {
   }
 
   const content = <>
-    <div className='lg:hidden block absolute top-14 w-full left-0 right-0 bg-gray-100 shadow-xl text-gray-900 transition'>
+    <div className='lg:hidden block absolute top-[100px] w-full left-0 right-0 bg-gray-100 shadow-xl text-gray-900 transition'>
       <ul className='text-center text-xl p-10'>
         <HashLink smooth duration={300} to="/#About" style={{ textDecoration: 'none', color: '#fff' }}>
           <li className='my-3 py-3 text-gray-900 hover:bg-gray-300 hover:rounded'>About</li>
