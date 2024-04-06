@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
-import { Button, Spin } from "antd";
-import '../../index.css';
+import { Button, Spin, message } from "antd";
+import "../../index.css";
 
 const organizationCodeMap = {
   Government: "GO",
@@ -19,11 +19,27 @@ export default function RegForm() {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [submitClicked, setsubmitClicked] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const success = () => {
+    messageApi.open({
+      type: 'success',
+      content: 'Thank you for registering',
+    });
+  };
+  const error = () => {
+    messageApi.open({
+      type: 'error',
+      content: 'Sorry, there was an error. Please try again in some time',
+    });
+  };
+
 
   const onSubmit = (data) => {
+    console.log(data)
     setLoading(true);
     const finalData = { ...data };
-    finalData.dob = new Date(data.dob).getUTCMilliseconds();
+    console.log(finalData.dob)
     fetch("https://kalam-awards-server.onrender.com/register", {
       headers: {
         Accept: "application/json",
@@ -38,19 +54,24 @@ export default function RegForm() {
         console.log(data);
         setCustomUUID(data.id);
         setShowConfirmation(true);
-        reset();
+        if(data.success) {
+          reset() 
+          success()}
+        else error()
       })
       .catch(function (res) {
         console.log(res);
+        error()
         // setsubmitClicked(false);
       })
       .finally(() => {
-        setLoading(false); 
+        setLoading(false);
       });
   };
 
   return (
     <div className="bg-[#dad4c3] p-10 rounded-md shadow-md w-300 mx-auto max-w-full">
+      {contextHolder}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-5 rounded-xl shadow-md w-300 mx-auto max-w-[800px] text-black"
@@ -187,7 +208,7 @@ export default function RegForm() {
               <option value="Maths">Maths</option>
               <option value="Science">Science</option>
               <option value="Social">Social</option>
-              <option value="ComputerScience">Computer Science</option>
+              <option value="Computer Science">Computer Science</option>
             </select>
           )}
         />
@@ -225,14 +246,18 @@ export default function RegForm() {
         />
 
         <div className="w-full flex justify-between mt-6">
-          <Button htmlType="submit" className="sub bg-green-500 text-white px-3 rounded-md cursor-pointer hover:border-none" loading={loading}>
+          <Button
+            htmlType="submit"
+            className="sub bg-green-500 text-white px-3 rounded-md cursor-pointer hover:border-none"
+            loading={loading}
+          >
             Submit
           </Button>
           <input type="reset" className="bg-red-500 text-white px-3 rounded-md cursor-pointer hover:bg-red-600" />
         </div>
       </form>
 
-      {loading && ( 
+      {loading && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
           <Spin size="large" />
         </div>
