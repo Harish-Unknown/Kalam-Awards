@@ -39,7 +39,7 @@ export default function RegForm() {
     console.log(data)
     setLoading(true);
     const finalData = { ...data };
-    console.log(finalData.dob)
+    console.log(JSON.stringify(finalData))
     fetch("https://kalam-awards-server.onrender.com/register", {
       headers: {
         Accept: "application/json",
@@ -53,10 +53,11 @@ export default function RegForm() {
         setsubmitClicked(false);
         console.log(data);
         setCustomUUID(data.id);
-        setShowConfirmation(true);
+        
         if(data.success) {
           reset() 
-          success()}
+          success()
+          setShowConfirmation(true);}
         else error()
       })
       .catch(function (res) {
@@ -87,8 +88,10 @@ export default function RegForm() {
           rules={{ required: true }}
           render={({ field }) => (
             <select {...field} className="w-full p-2 border border-gray-300 rounded-md">
-              <option value="Student">Student</option>
+              <option value="">Select</option>
               <option value="Teacher">Teacher</option>
+              <option value="School">School</option>
+              <option value="Principal">Principal</option>
             </select>
           )}
         />
@@ -103,9 +106,9 @@ export default function RegForm() {
               <option value="">Select</option>
               <option value="Government">Government</option>
               <option value="GovernmentAided">Government Aided</option>
+              <option value="International">International</option>
               <option value="Matriculation">Matriculation</option>
               <option value="CBSE">CBSE</option>
-              <option value="International">International</option>
             </select>
           )}
         />
@@ -156,7 +159,7 @@ export default function RegForm() {
           className="w-full p-2 border border-gray-300 rounded-md"
         />
 
-        <label className="block text-sm mt-4 mb-2">Location*</label>
+        <label className="block text-sm mt-4 mb-2">Address of School*</label>
         <input
           type="text"
           placeholder="Location"
@@ -172,14 +175,8 @@ export default function RegForm() {
           className="w-full p-2 border border-gray-300 rounded-md"
         />
 
-        <label className="block text-sm mt-4 mb-2">Address*</label>
-        <textarea
-          placeholder="Address"
-          {...register("address", { required: true })}
-          className="w-full p-2 border border-gray-300 rounded-md"
-        />
 
-        <label className="block text-sm mt-4 mb-2">Contact Person Number*</label>
+        <label className="block text-sm mt-4 mb-2">Mobile number with Whatsapp*</label>
         <input
           type="tel"
           placeholder="Contact Person Number"
@@ -187,15 +184,7 @@ export default function RegForm() {
           className="w-full p-2 border border-gray-300 rounded-md"
         />
 
-        <label className="block text-sm mt-4 mb-2">District*</label>
-        <input
-          type="text"
-          placeholder="District"
-          {...register("district", { required: true })}
-          className="w-full p-2 border border-gray-300 rounded-md"
-        />
-
-        <label className="block text-sm mt-4 mb-2">Select Subject*</label>
+        {/* <label className="block text-sm mt-4 mb-2">Select Subject*</label>
         <Controller
           name="subject"
           control={control}
@@ -211,29 +200,13 @@ export default function RegForm() {
               <option value="Computer Science">Computer Science</option>
             </select>
           )}
-        />
-
-        <label className="block text-sm mt-4 mb-2">School Email ID*</label>
-        <input
-          type="email"
-          placeholder="School Email ID"
-          {...register("schoolEmailId", { required: true })}
-          className="w-full p-2 border border-gray-300 rounded-md"
-        />
+        /> */}
 
         <label className="block text-sm mt-4 mb-2">Email ID*</label>
         <input
           type="email"
           placeholder="Email ID"
           {...register("emailId", { required: true })}
-          className="w-full p-2 border border-gray-300 rounded-md"
-        />
-
-        <label className="block text-sm mt-4 mb-2">Mobile Number*</label>
-        <input
-          type="tel"
-          placeholder="Mobile Number"
-          {...register("mobileNumber", { required: true })}
           className="w-full p-2 border border-gray-300 rounded-md"
         />
 
