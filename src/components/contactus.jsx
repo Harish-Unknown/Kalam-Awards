@@ -19,7 +19,7 @@ export default function Contactus() {
             <p className="text-sm text-gray-700 mb-2">
             <h3>Phone</h3>
             <ul className='text-lg my-3 w-[90%] list-disc' >
-                <li>Mrs. T. Mangayarkarasi - 87545 02226 </li>
+                <li>Ms. T. Mangayarkarasi - 87545 02226 </li>
                 <li>Dr. V. Brindha Devi - 87545 82225 </li>
                 <li>Dr. G. Prakash - 87545 82221</li>
                 <li>Dr. K. Renganathan - 87545 02228</li>
